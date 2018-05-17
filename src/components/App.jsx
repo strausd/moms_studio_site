@@ -4,17 +4,17 @@ import AppRouter from '../routers/AppRouter';
 
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <div>
-                <AppRouter />
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <AppRouter />
+      </div>
+    );
+  }
 }
 
 export default App;

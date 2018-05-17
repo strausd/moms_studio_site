@@ -7,15 +7,12 @@ import App from './components/App';
 
 import './styles/styles.scss';
 
-// TODO
-// Cleanup for solid boilerplate
-
 const store = configureStore();
 
 const jsx = (
-    <Provider store={store}>
-        <App />
-    </Provider>
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
 
 ReactDOM.render(jsx, document.getElementById('root'));

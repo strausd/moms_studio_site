@@ -5,5 +5,5 @@ import DotEnv from 'dotenv';
 DotEnv.config({ path: '.env.test' });
 
 configure({
-    adapter: new Adapter()
+  adapter: new Adapter()
 });
