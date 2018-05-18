@@ -1,22 +1,40 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Header from '../components/Header';
 import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
+import LessonsPage from '../components/LessonsPage';
+import ContactPage from '../components/ContactPage';
+import { objIsEmpty } from '../utils/utils.jsx';
 
 
-const AppRouter = () => {
+const AppRouter = props => {
   return (
     <Router>
       <div>
-        <Header />
+        <Header pages={props.pages} />
 
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/about" component={AboutPage} />
+        {props.pages && props.pages.map(page => {
+          switch(page.__typename) {
+            case 'HomePage':
+              return <Route key={page.id} exact path="/" component={() => <HomePage pageData={page} />} />;
+            case 'LessonPage':
+              return <Route key={page.id} path={`/${page.slug}`} component={() => <LessonsPage pageData={page} />} />;
+            case 'AboutPage':
+              return <Route key={page.id} path={`/${page.slug}`} component={() => <AboutPage pageData={page} />} />;
+            case 'ContactPage':
+              return <Route key={page.id} path={`/${page.slug}`} component={() => <ContactPage pageData={page} />} />;
+          }
+        })}
       </div>
     </Router>
   );
 };
 
-export default AppRouter;
+const mapStateToProps = state => ({
+    pages: state.pages
+});
+
+export default connect(mapStateToProps)(AppRouter);

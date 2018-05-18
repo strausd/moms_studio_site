@@ -1,3 +1,22 @@
 body {
   font-family: sans-serif;
+  margin: 0;
+}
+
+.page_content {
+  margin-top: 80px;
+  max-width: 500px;
+  width: 90%;
+  padding: 0 5%;
+  margin: 80px auto;
+}
+
+img.portrait {
+  display: block;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid red;
+  margin: 10px auto;
 }

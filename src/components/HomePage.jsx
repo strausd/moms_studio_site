@@ -1,15 +1,15 @@
 import React from 'react';
 
 
-export class HomePage extends React.Component {
-
-  render() {
-    return (
-      <div>
-        <h1>Home Page</h1>
-      </div>
-    );
-  }
+const HomePage = ({ pageData }) => {
+  console.log(pageData)
+  return (
+    <div className="page_content">
+      <h1>{pageData.title}</h1>
+      <img className="portrait" src={pageData.image.url} alt={pageData.image.fileName}/>
+      <div dangerouslySetInnerHTML={{__html: pageData.body}}></div>
+    </div>
+  );
 };
 
 

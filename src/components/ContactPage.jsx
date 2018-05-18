@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const AboutPage = ({ pageData }) => {
+const ContactPage = ({ pageData }) => {
   console.log(pageData)
   return (
     <div className="page_content">
@@ -11,4 +11,4 @@ const AboutPage = ({ pageData }) => {
   );
 };
 
-export default AboutPage;
+export default ContactPage;

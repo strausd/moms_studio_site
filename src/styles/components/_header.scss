@@ -1,0 +1,40 @@
+.header {
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 90%;
+  padding: 0 5%;
+  height: 80px;
+  background-color: white;
+
+  ul {
+    display: flex;
+    font-size: 1.3em;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 0;
+    top: 24px;
+    position: relative;
+
+    li {
+      list-style: none;
+
+      a {
+        color: black;
+        text-decoration: none;
+        transition: color .2s ease;
+
+        &.active {
+          border-bottom: 3px solid red;
+          color: red;
+        }
+
+        &:hover {
+          color: red;
+        }
+      }
+    }
+  }
+}
