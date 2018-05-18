@@ -2,7 +2,6 @@ import React from 'react';
 
 
 const AboutPage = ({ pageData }) => {
-  console.log(pageData)
   return (
     <div className="page_content">
       <h1>{pageData.title}</h1>

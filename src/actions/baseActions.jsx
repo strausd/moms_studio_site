@@ -1,9 +1,16 @@
-export const addPagesData = data => ({
-  type: 'ADD_PAGES_DATA',
-  pages: [
-    data.allHomePages[0],
-    data.allLessonPages[0],
-    data.allAboutPages[0],
-    data.allContactPages[0]
-  ]
-});
+export const addPagesData = (pages, timestamp=false) => {
+  const dataForLocalStorage = {};
+  if (timestamp) {
+    dataForLocalStorage.dateUpdated = timestamp;
+  } else {
+    const now = new Date()
+    dataForLocalStorage.dateUpdated = now.getTime();
+  }
+  dataForLocalStorage.pages = pages;
+  localStorage.setItem('siteData', JSON.stringify(dataForLocalStorage));
+
+  return {
+    type: 'ADD_PAGES_DATA',
+    pages
+  };
+};

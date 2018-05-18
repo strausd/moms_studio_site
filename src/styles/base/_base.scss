@@ -1,14 +1,30 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/dist/img/music_background.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: $light;
   font-family: sans-serif;
   margin: 0;
+  line-height: 1.4em;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  line-height: 1.1em;
 }
 
 .page_content {
-  margin-top: 80px;
   max-width: 500px;
   width: 90%;
-  padding: 0 5%;
-  margin: 80px auto;
+  padding: 15px 5%;
+  margin: 80px auto 30px auto;
 }
 
 img.portrait {
@@ -17,6 +33,67 @@ img.portrait {
   height: 250px;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid red;
-  margin: 10px auto;
+  border: 3px solid $accent;
+  margin: 30px auto;
+}
+
+ul.fancy-list {
+  list-style: none;
+  margin-bottom: 3em;
+  padding-left: 20px;
+
+  li {
+    position: relative;
+    padding: .4em .4em .4em 2em;
+    margin: .5em 0;
+    background: $light;
+    color: $dark;
+    border-radius: $radius-small;
+    transition: all .25s ease;
+
+    &:hover {
+      background: white;
+    }
+
+    &::before {
+      content: '';
+      counter-increment: li;
+      position: absolute; 
+      left: -1.3em;
+      top: 50%;
+      margin-top: -1.3em;
+      background: $accent;
+      height: 2em;
+      width: 2em;
+      line-height: 2em;
+      border: .3em solid $dark;
+      text-align: center;
+      border-radius: 2em;
+    }
+  }
+}
+
+.btn {
+  font-size: 1.2em;
+  padding: .4em .8em;
+  border-radius: $radius-small;
+  border: none;
+  background-color: $light;
+  transition: all .25s ease;
+
+  &:hover {
+    background-color: white;
+    cursor: pointer;
+  }
+}
+
+.btn--accent {
+  background-color: transparent;
+  color: $light;
+  border: 3px solid $accent;
+
+  &:hover {
+    background-color: transparent;
+    color: $accent;
+  }
 }

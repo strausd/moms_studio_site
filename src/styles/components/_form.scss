@@ -1,0 +1,26 @@
+.input-grp {
+  width: 100%;
+  margin-bottom: 1em;
+
+  label {
+    display: block;
+    margin-bottom: .1em;
+  }
+
+  .form-text-input {
+    width: 100%;
+    font-size: 1em;
+    padding: 0.7em;
+    font-family: sans-serif;
+    background-color: $light;
+    color: $dark;
+    border: 3px solid transparent;
+    border-radius: $radius-small;
+    transition: border .25s ease;
+
+    &:active, &:focus {
+      outline: none;
+      border: 3px solid $accent;
+    }
+  }
+}

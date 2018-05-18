@@ -3,10 +3,10 @@
   overflow: hidden;
   position: fixed;
   top: 0;
-  width: 90%;
+  width: 100%;
   padding: 0 5%;
   height: 80px;
-  background-color: white;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75));
 
   ul {
     display: flex;
@@ -15,24 +15,24 @@
     margin: 0 auto;
     max-width: 500px;
     padding: 0;
-    top: 24px;
+    top: 27px;
     position: relative;
 
     li {
       list-style: none;
 
       a {
-        color: black;
+        color: $light;
         text-decoration: none;
         transition: color .2s ease;
 
         &.active {
-          border-bottom: 3px solid red;
-          color: red;
+          border-bottom: 3px solid $accent;
+          color: $accent;
         }
 
         &:hover {
-          color: red;
+          color: $accent;
         }
       }
     }
