@@ -85,6 +85,10 @@ ul.fancy-list {
     background-color: white;
     cursor: pointer;
   }
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .btn--accent {
@@ -96,4 +100,12 @@ ul.fancy-list {
     background-color: transparent;
     color: $accent;
   }
+}
+
+.success {
+  color: $accent;
+}
+
+.error {
+  color: $red;
 }

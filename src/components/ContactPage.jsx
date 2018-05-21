@@ -2,6 +2,11 @@ import React from 'react';
 
 
 export class ContactPage extends React.Component {
+  state = {
+    submitted: false,
+    success: false
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     const formIsValid = this.validateForm();
@@ -10,11 +15,27 @@ export class ContactPage extends React.Component {
       const email = this.refs.email.value;
       const message = this.refs.message.value;
       const data = { name, email, message };
-      console.log(data);
-      fetch('//flipmail.co/api/L448N06sFeUnluBLsy6u', {
+      this.refs.name.value = '';
+      this.refs.email.value = '';
+      this.refs.message.value = '';
+      fetch(`${process.env.URL}api/contact`, {
         method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify(data)
-      }).then(data => console.log(data)).catch(e => console.log(e));
+      }).then(data => {
+        this.setState(() => ({
+          submitted: true,
+          success: true
+        }));
+      }).catch(e => {
+        this.setState(() => ({
+          submitted: true,
+          success: false
+        }));
+      });
     } else {
       console.log('Invalid');
     }
@@ -51,6 +72,18 @@ export class ContactPage extends React.Component {
     return false;
   };
 
+  renderMessages = () => {
+    if (this.state.submitted && !this.state.success) {
+      return (
+        <p className="error">Uh oh! There was an error sending your message. Please refresh and try again.</p>
+      );
+    } else if (this.state.submitted && this.state.success) {
+      return (
+        <p className="success">Your message has been successfully sent!</p>
+      );
+    }
+  }
+
   render() {
     return (
       <div className="page_content">
@@ -69,6 +102,7 @@ export class ContactPage extends React.Component {
             <label htmlFor="message">Message</label>
             <textarea className="form-text-input" name="message" id="message" cols="30" rows="10" ref="message" onChange={e => this.validateBasicText(e.target)} ></textarea>
           </div>
+          {this.renderMessages()}
           <button className="btn btn--accent" >Submit</button>
         </form>
       </div>
