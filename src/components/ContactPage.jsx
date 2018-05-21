@@ -11,7 +11,7 @@ export class ContactPage extends React.Component {
       const message = this.refs.message.value;
       const data = { name, email, message };
       console.log(data);
-      fetch('https://www.elformo.com/forms/f6e172f8-b0af-4fd1-aa29-c592e0131af4', {
+      fetch('//flipmail.co/api/L448N06sFeUnluBLsy6u', {
         method: 'POST',
         body: JSON.stringify(data)
       }).then(data => console.log(data)).catch(e => console.log(e));
