@@ -1,6 +1,7 @@
 .input-grp {
   width: 100%;
   margin-bottom: 1em;
+  transition: color .25s ease;
 
   label {
     display: block;
@@ -21,6 +22,14 @@
     &:active, &:focus {
       outline: none;
       border: 3px solid $accent;
+    }
+  }
+
+  &.invalid {
+    color: $red;
+
+    .form-text-input, .form-text-input:active, .form-text-input:focus {
+      border: 3px solid $red;
     }
   }
 }
