@@ -77,8 +77,7 @@ export const makeUpdatedSiteDataCall = () => {
         id,
         title,
         body,
-        slug,
-        mailAPI
+        slug
       }
     }
   `

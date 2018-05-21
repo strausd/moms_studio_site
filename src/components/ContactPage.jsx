@@ -36,8 +36,6 @@ export class ContactPage extends React.Component {
           success: false
         }));
       });
-    } else {
-      console.log('Invalid');
     }
   }
 
@@ -92,15 +90,15 @@ export class ContactPage extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className="input-grp">
             <label htmlFor="name">Name</label>
-            <input className="form-text-input" name="name" id="name" type="text" ref="name" placeholder="Name" onChange={e => this.validateBasicText(e.target)} />
+            <input className="form-text-input" name="name" id="name" type="text" ref="name" maxLength="100" placeholder="Name" onChange={e => this.validateBasicText(e.target)} />
           </div>
           <div className="input-grp">
             <label htmlFor="email">Email</label>
-            <input className="form-text-input" name="email" id="email" type="text" ref="email" placeholder="Email" onChange={e => this.validateEmail(e.target)} />
+            <input className="form-text-input" name="email" id="email" type="text" ref="email" maxLength="100" placeholder="Email" onChange={e => this.validateEmail(e.target)} />
           </div>
           <div className="input-grp">
             <label htmlFor="message">Message</label>
-            <textarea className="form-text-input" name="message" id="message" cols="30" rows="10" ref="message" onChange={e => this.validateBasicText(e.target)} ></textarea>
+            <textarea className="form-text-input" name="message" id="message" rows="7" maxLength="500" ref="message" onChange={e => this.validateBasicText(e.target)} ></textarea>
           </div>
           {this.renderMessages()}
           <button className="btn btn--accent" >Submit</button>
