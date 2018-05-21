@@ -91,7 +91,6 @@ export const getSiteData = store => {
   if (siteData && !needNewSiteData(siteData.dateUpdated)) {
     store.dispatch(addPagesData(siteData.pages, siteData.dateUpdated));
   } else {
-    console.log('Making new API call');
     makeUpdatedSiteDataCall().then(payload => {
       const pages = [
         payload.data.allHomePages[0],
