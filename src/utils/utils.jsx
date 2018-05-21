@@ -31,7 +31,7 @@ export const needNewSiteData = oldTimeStamp => {
   const oldTime = new Date(oldTimeStamp);
   const now = new Date();
   const hours = (now - oldTime) / 36e5;
-  return hours > 1;
+  return hours > .00001;
 }
 
 export const makeUpdatedSiteDataCall = () => {
