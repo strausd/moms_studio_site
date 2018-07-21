@@ -9,33 +9,41 @@ export class ContactPage extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const formIsValid = this.validateForm();
-    if (formIsValid) {
-      const name = this.refs.name.value;
-      const email = this.refs.email.value;
-      const message = this.refs.message.value;
-      const data = { name, email, message };
-      this.refs.name.value = '';
-      this.refs.email.value = '';
-      this.refs.message.value = '';
-      fetch(`${process.env.URL}api/contact`, {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      }).then(data => {
-        this.setState(() => ({
+    const honeyPot = this.refs.address.value;
+    if (honeyPot) {
+      this.setState(() => ({
           submitted: true,
           success: true
         }));
-      }).catch(e => {
-        this.setState(() => ({
-          submitted: true,
-          success: false
-        }));
-      });
+    } else {
+      const formIsValid = this.validateForm();
+      if (formIsValid) {
+        const name = this.refs.name.value;
+        const email = this.refs.email.value;
+        const message = this.refs.message.value;
+        const data = { name, email, message };
+        this.refs.name.value = '';
+        this.refs.email.value = '';
+        this.refs.message.value = '';
+        fetch(`${process.env.URL}api/contact`, {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        }).then(data => {
+          this.setState(() => ({
+            submitted: true,
+            success: true
+          }));
+        }).catch(e => {
+          this.setState(() => ({
+            submitted: true,
+            success: false
+          }));
+        });
+      }
     }
   }
 
@@ -95,6 +103,10 @@ export class ContactPage extends React.Component {
           <div className="input-grp">
             <label htmlFor="email">Email</label>
             <input className="form-text-input" name="email" id="email" type="text" ref="email" maxLength="100" placeholder="Email" onChange={e => this.validateEmail(e.target)} />
+          </div>
+          <div className="input-grp hidden">
+            <label htmlFor="address">Address</label>
+            <input className="form-text-input" name="address" id="address" type="text" ref="address" maxLength="100" placeholder="Address" />
           </div>
           <div className="input-grp">
             <label htmlFor="message">Message</label>

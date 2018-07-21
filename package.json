@@ -2,7 +2,7 @@
   "name": "karen-straus-music-studio",
   "version": "1.0.0",
   "engines": {
-    "node": "8.6.0"
+    "node": "8.11.3"
   },
   "main": "index.js",
   "license": "MIT",
