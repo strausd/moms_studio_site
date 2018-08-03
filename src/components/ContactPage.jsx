@@ -9,7 +9,7 @@ export class ContactPage extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const honeyPot = this.refs.address.value;
+    const honeyPot = this.refs.birthDay.value;
     if (honeyPot) {
       this.setState(() => ({
           submitted: true,
@@ -94,8 +94,8 @@ export class ContactPage extends React.Component {
     return (
       <div className="page_content">
         <h1>{this.props.pageData.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: this.props.pageData.body }}></div>
-        <form onSubmit={this.handleSubmit}>
+        {this.props.pageData.showBody && <div dangerouslySetInnerHTML={{ __html: this.props.pageData.body }}></div>}
+        <form onSubmit={this.handleSubmit} className="form" autoComplete={'off'}>
           <div className="input-grp">
             <label htmlFor="name">Name</label>
             <input className="form-text-input" name="name" id="name" type="text" ref="name" maxLength="100" placeholder="Name" onChange={e => this.validateBasicText(e.target)} />
@@ -105,8 +105,8 @@ export class ContactPage extends React.Component {
             <input className="form-text-input" name="email" id="email" type="text" ref="email" maxLength="100" placeholder="Email" onChange={e => this.validateEmail(e.target)} />
           </div>
           <div className="input-grp hidden">
-            <label htmlFor="address">Address</label>
-            <input className="form-text-input" name="address" id="address" type="text" ref="address" maxLength="100" placeholder="Address" />
+            <label htmlFor="birthDay">Birth Day</label>
+            <input className="form-text-input" name="birthDay" id="birthDay" type="text" ref="birthDay" maxLength="100" placeholder="Birth Day" />
           </div>
           <div className="input-grp">
             <label htmlFor="message">Message</label>

@@ -54,6 +54,7 @@ export const makeUpdatedSiteDataCall = () => {
         id,
         title,
         body,
+        showBody
         slug,
         costIntro,
         lessonCosts {
@@ -77,6 +78,7 @@ export const makeUpdatedSiteDataCall = () => {
         id,
         title,
         body,
+        showBody,
         slug
       }
     }

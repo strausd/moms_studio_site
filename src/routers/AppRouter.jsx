@@ -7,8 +7,6 @@ import HomePage from '../components/HomePage';
 import AboutPage from '../components/AboutPage';
 import LessonsPage from '../components/LessonsPage';
 import ContactPage from '../components/ContactPage';
-import { objIsEmpty } from '../utils/utils.jsx';
-
 
 const AppRouter = props => {
   return (
@@ -18,14 +16,14 @@ const AppRouter = props => {
 
         {props.pages && props.pages.map(page => {
           switch(page.__typename) {
-            case 'HomePage':
-              return <Route key={page.id} exact path="/" component={() => <HomePage pageData={page} />} />;
             case 'LessonPage':
               return <Route key={page.id} path={`/${page.slug}`} component={() => <LessonsPage pageData={page} />} />;
             case 'AboutPage':
               return <Route key={page.id} path={`/${page.slug}`} component={() => <AboutPage pageData={page} />} />;
             case 'ContactPage':
               return <Route key={page.id} path={`/${page.slug}`} component={() => <ContactPage pageData={page} />} />;
+            default:
+              return <Route key={page.id} exact path="/" component={() => <HomePage pageData={page} />} />;
           }
         })}
       </div>
